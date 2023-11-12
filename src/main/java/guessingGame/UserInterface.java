@@ -70,4 +70,40 @@ public class UserInterface {
             return 3;
         }
     }
-}
+
+    public Difficulty selectDifficulty()
+    {
+        Difficulty difficulty = Difficulty.NOT_INITIALISED;
+        boolean selected = false;
+        Scanner inputScanner = new Scanner(System.in);
+        while (selected == false)
+        {
+            System.out.println("select difficulty: 1 for easy, 2 for difficult, 3 for hard");
+            int result = inputScanner.nextInt();
+            if (result == 1)
+            {
+                selected = true;
+                difficulty = Difficulty.EASY;
+            }
+            else if (result==2)
+            {
+                selected = true;
+                difficulty = Difficulty.MEDIUM;
+            }
+            else if (result == 3)
+            {
+                selected = true;
+                difficulty = Difficulty.HARD;
+            }
+
+        }
+        return difficulty;
+    }
+
+    public void outputLeaderboard(Leaderboard leaderboard)
+    {
+            for (int i = 0; i < leaderboard.getLeaderboard().size(); i++) 
+            System.out.println(leaderboard.getLeaderboard().get(i).getName() + " " + leaderboard.getLeaderboard().get(i).getHighScore());        
+        }
+    }
+

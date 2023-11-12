@@ -21,4 +21,9 @@ public class Player {
     {
         return highScore;
     }
+    
+    public String getName()
+    {
+        return playerName;
+    }
 }

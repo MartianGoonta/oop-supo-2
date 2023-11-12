@@ -3,5 +3,16 @@ package src.main.java.guessingGame;
 import java.util.ArrayList;
 
 public class Leaderboard {
-    ArrayList<Player> leaderboard = new ArrayList<Player>();
+    private ArrayList<Player> leaderboard = new ArrayList<Player>();
+
+    public void addScore(Player player)
+    {
+        leaderboard.add(player);
+    }
+
+    public ArrayList<Player> getLeaderboard()
+    {
+        return leaderboard;
+    }
+
 }
