@@ -6,6 +6,7 @@ public class GameManager {
 
         boolean exit = false;
         UserInterface userInterface = new UserInterface();
+        Leaderboard leaderboard = new Leaderboard();
         while (exit == false)
         {
             int action = userInterface.mainMenu();
@@ -16,14 +17,14 @@ public class GameManager {
                 boolean newGame = true;
                 while (newGame == true)
                 {
-                    Difficulty selectedDifficulty = Difficulty.NOT_INITIALISED;
-                    selectedDifficulty = selectedDifficulty.selectDifficulty();
+                    Difficulty selectedDifficulty = userInterface.selectDifficulty();
                     Game game = new Game(selectedDifficulty,player);
                     boolean game_ended = false;
                     while (game_ended == false)
                     {
                         game_ended = userInterface.evaluateGuess(game.makeGuess(userInterface.inputGuess()));
                     }
+                    leaderboard.addScore(player);
                     if (userInterface.endgame() == 2)
                     {
                         newGame = false;
@@ -32,7 +33,7 @@ public class GameManager {
             }
             else if (action == 2)
             {
-                //leaderboard
+                userInterface.outputLeaderboard(leaderboard);
             }
             else
             {
